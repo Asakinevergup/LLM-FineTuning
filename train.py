@@ -103,26 +103,6 @@ def main():
         )
         model = get_peft_model(model, config)
         model.config.torch_dtype = torch.float32
-
-    elif args.train_type == "freeze":
-        model = MODE[args.mode]["model"].from_pretrained(args.model_name_or_path, local_files_only=True)
-        freeze_module_name = args.freeze_module_name.split(",")
-        for name, param in model.named_parameters():
-            if not any(nd in name for nd in freeze_module_name):
-                param.requires_grad = False
-
-    elif args.train_type == "ptuning":
-        config = MODE[args.mode]["config"].from_pretrained(args.model_name_or_path, local_files_only=True)
-        config.pre_seq_len = args.pre_seq_len
-        config.prefix_projection = args.prefix_projection
-        model = MODE[args.mode]["model"].from_pretrained(args.model_name_or_path, config=config, local_files_only=True)
-        for name, param in model.named_parameters():
-            if not any(nd in name for nd in ["prefix_encoder"]):
-                param.requires_grad = False
-
-    elif args.train_type == "all":
-        model = MODE[args.mode]["model"].from_pretrained(args.model_name_or_path, local_files_only=True)
-
     else:
         raise Exception("train_type无效")
 
