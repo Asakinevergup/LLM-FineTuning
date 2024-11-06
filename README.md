@@ -109,11 +109,11 @@ def load_model(lora_choice):
 
   - 仅使用基础模型
 
-  ![image-20241106152119010](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20241106152119010.png)
+  ![image-20241106152119010](images/onlymodel.png)
 
   - 使用了lora微调后的模型
 
-  ![image-20241106152101905](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20241106152101905.png)
+  ![image-20241106152101905](images/modelandlora.png)
 
   注：以上法律问答知识来源于网络，仅作为大模型微调素材，不构成法律建议，具体问题请咨询法律从业人员
 
